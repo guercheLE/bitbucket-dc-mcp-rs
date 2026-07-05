@@ -1,0 +1,23 @@
+services:
+  bitbucket-dc-mcp:
+    build: .
+    image: bitbucket-dc-mcp:latest
+    env_file:
+      - .env
+    volumes:
+      - ~/.bitbucket-dc-mcp:/root/.bitbucket-dc-mcp
+    stdin_open: true
+    tty: true
+
+  bitbucket-dc-mcp-http:
+    build: .
+    image: bitbucket-dc-mcp:latest
+    env_file:
+      - .env
+    environment:
+      BITBUCKET_DC_MCP_TRANSPORT: http
+      BITBUCKET_DC_MCP_PORT: "3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ~/.bitbucket-dc-mcp:/root/.bitbucket-dc-mcp
