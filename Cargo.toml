@@ -14,7 +14,7 @@ name = "bitbucket-dc-mcp"
 path = "src/main.rs"
 
 [[bin]]
-name = "populate-embeddings"
+name = "bitbucket-dc-mcp-populate-embeddings"
 path = "src/bin/populate_embeddings.rs"
 
 [[bin]]
