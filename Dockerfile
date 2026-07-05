@@ -19,7 +19,7 @@ COPY Cargo.toml Cargo.lock* ./
 COPY src ./src
 COPY mcp_store.db ./mcp_store.db
 
-RUN cargo build --release
+RUN cargo build --release --locked
 
 # mcp_store.db leaves the Rust generator with an empty semantic_endpoints
 # table (vectors are computed here, not by mcpify itself — see the plan's
