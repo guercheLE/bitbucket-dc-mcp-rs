@@ -33,6 +33,10 @@ const KNOWN_VERSIONS: &[VersionRow] = &[
         label: "8.19",
         is_default: false,
     },
+    VersionRow {
+        label: "9.4",
+        is_default: false,
+    },
 ];
 // mcpify:versions:end
 
