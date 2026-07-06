@@ -28,6 +28,7 @@ pub const VERSION_STORE_FILES: &[(&str, &str)] = &[
     ("9.6", "mcp_store_v9.6.db"),
     ("9.5", "mcp_store_v9.5.db"),
     ("8.19", "mcp_store_v8.19.db"),
+    ("9.4", "mcp_store_v9.4.db"),
 ];
 
 const VERSION_STORE_BYTES: &[(&str, &[u8])] = &[
@@ -36,6 +37,7 @@ const VERSION_STORE_BYTES: &[(&str, &[u8])] = &[
     ("9.6", include_bytes!("../../mcp_store_v9.6.db")),
     ("9.5", include_bytes!("../../mcp_store_v9.5.db")),
     ("8.19", include_bytes!("../../mcp_store_v8.19.db")),
+    ("9.4", include_bytes!("../../mcp_store_v9.4.db")),
 ];
 // mcpify:versions:end
 

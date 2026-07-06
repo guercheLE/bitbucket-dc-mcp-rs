@@ -34,6 +34,12 @@
       "schemas_file": "src/validation/generated_schemas_v8.19.json.zst",
       "source": "https://dac-static.atlassian.com/server/bitbucket/8.19.swagger.v3.json",
       "added_at": 1783259338
+    },
+    "9.4": {
+      "db_file": "mcp_store_v9.4.db",
+      "schemas_file": "src/validation/generated_schemas_v9.4.json.zst",
+      "source": "https://dac-static.atlassian.com/server/bitbucket/9.4.swagger.v3.json",
+      "added_at": 1783349123
     }
   }
 }
