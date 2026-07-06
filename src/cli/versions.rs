@@ -22,10 +22,6 @@ const KNOWN_VERSIONS: &[VersionRow] = &[
         is_default: false,
     },
     VersionRow {
-        label: "10.0",
-        is_default: false,
-    },
-    VersionRow {
         label: "9.6",
         is_default: false,
     },
@@ -34,103 +30,7 @@ const KNOWN_VERSIONS: &[VersionRow] = &[
         is_default: false,
     },
     VersionRow {
-        label: "9.4",
-        is_default: false,
-    },
-    VersionRow {
-        label: "9.3",
-        is_default: false,
-    },
-    VersionRow {
-        label: "9.2",
-        is_default: false,
-    },
-    VersionRow {
-        label: "9.1",
-        is_default: false,
-    },
-    VersionRow {
-        label: "9.0",
-        is_default: false,
-    },
-    VersionRow {
         label: "8.19",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.18",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.17",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.16",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.15",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.14",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.13",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.12",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.11",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.10",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.9",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.8",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.7",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.6",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.5",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.4",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.3",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.2",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.1",
-        is_default: false,
-    },
-    VersionRow {
-        label: "8.0",
         is_default: false,
     },
 ];
