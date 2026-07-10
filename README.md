@@ -16,6 +16,8 @@ Or install the published crate directly:
 cargo install bitbucket-dc-mcp
 ```
 
+Prebuilt binaries for macOS, Linux, and Windows are attached to each [GitHub Release](https://github.com/guercheLE/bitbucket-dc-mcp-rs/releases), along with a shell/PowerShell installer script.
+
 ## Setup
 
 ```bash
