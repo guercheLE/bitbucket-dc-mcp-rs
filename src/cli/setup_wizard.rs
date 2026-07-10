@@ -61,14 +61,7 @@ async fn prompt_auth_method() -> anyhow::Result<AuthMethod> {
 
 // mcpify:versions:begin
 async fn prompt_api_version() -> anyhow::Result<String> {
-    let choices = vec![
-        "10.3 (default/latest)",
-        "10.2",
-        "9.6",
-        "9.5",
-        "8.19",
-        "9.4",
-    ];
+    let choices = vec!["10.3 (default/latest)", "10.2", "9.6", "9.5", "8.19", "9.4"];
     let selection = tokio::task::spawn_blocking(move || {
         inquire::Select::new("API version to use:", choices).prompt()
     })
