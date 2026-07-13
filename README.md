@@ -37,10 +37,22 @@ Settings resolve through a cascade, first match wins: CLI flags -> environment v
 ### Terminal Client (default)
 
 ```bash
-bitbucket-dc-mcp search "create a pull request" --limit 5
-bitbucket-dc-mcp get <operationId>
-bitbucket-dc-mcp call <operationId> --args '{"projectKey": "PROJ"}'
+# 1. Semantic search over all 566 operations in the default Bitbucket store
+bitbucket-dc-mcp search "list open pull requests for a repository" --limit 5
+
+# 2. Inspect the exact method, path, and input/output schemas before calling
+bitbucket-dc-mcp get getPage
+# method: GET
+# path: /api/latest/projects/{projectKey}/repos/{repositorySlug}/pull-requests
+
+# 3. Path and query parameters are fields in one --args JSON object
+bitbucket-dc-mcp call getPage --args '{"projectKey":"PROJ","repositorySlug":"app","state":"OPEN","limit":25}'
+
+# Request payloads are nested under body in that same object
+bitbucket-dc-mcp call createBranch --args '{"projectKey":"PROJ","repositorySlug":"app","body":{"name":"feature/docs","startPoint":"refs/heads/main"}}'
 ```
+
+`call` accepts one JSON object through `--args` (or `-a`), not arbitrary per-operation CLI flags. Use `get <operationId>` to see the accepted field names and which ones are required.
 
 ### Harness Server
 
