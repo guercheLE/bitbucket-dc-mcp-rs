@@ -1,0 +1,32 @@
+language: rust
+output: .
+force: true
+publish_registry: true
+publication:
+  license: MIT
+  repository: https://github.com/guercheLE/bitbucket-dc-mcp-rs
+  readme: README.md
+  authors: ["Luciano Evaristo Guerche (Gorše)"]
+  keywords: [mcp, bitbucket, cli, api]
+  categories: [command-line-utilities, api-bindings]
+  exclude: [/.github, /.mcpify, /docs, /scripts, /openapi, /Dockerfile, /docker-compose.yml, /.dockerignore, /.env.example, /mcpify.yaml]
+auth:
+  - name: personalAccessToken
+    kind: pat
+versions:
+  - version: "10.3"
+    source: https://dac-static.atlassian.com/server/bitbucket/10.3.swagger.v3.json
+    default: true
+  - version: "10.2"
+    source: https://dac-static.atlassian.com/server/bitbucket/10.2.swagger.v3.json
+  - version: "9.6"
+    source: https://dac-static.atlassian.com/server/bitbucket/9.6.swagger.v3.json
+  - version: "9.5"
+    source: https://dac-static.atlassian.com/server/bitbucket/9.5.swagger.v3.json
+  - version: "9.4"
+    source: https://dac-static.atlassian.com/server/bitbucket/9.4.swagger.v3.json
+  - version: "8.19"
+    source: https://dac-static.atlassian.com/server/bitbucket/8.19.swagger.v3.json
+version_policy:
+  mode: all
+package_size_limit_mb: 100
