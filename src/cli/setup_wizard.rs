@@ -181,8 +181,11 @@ async fn prompt_persistence(
                 "Global (all runs for this user — ~/.bitbucket-dc-mcp/config.yml)",
             ];
             let tier_selection = tokio::task::spawn_blocking(move || {
-                inquire::Select::new("Save this config for just this project, or globally?", tier_choices)
-                    .prompt()
+                inquire::Select::new(
+                    "Save this config for just this project, or globally?",
+                    tier_choices,
+                )
+                .prompt()
             })
             .await??;
 
