@@ -32,6 +32,8 @@ Supported auth methods: `basic` (username/password) and `pat` (Bitbucket Data Ce
 
 Settings resolve through a cascade, first match wins: CLI flags -> environment variables (prefixed `BITBUCKET_DC_MCP_`, e.g. `BITBUCKET_DC_MCP_URL`, `BITBUCKET_DC_MCP_AUTH_METHOD`, `BITBUCKET_DC_MCP_API_VERSION`) -> `./bitbucket-dc-mcp.config.yml` -> `~/.bitbucket-dc-mcp/config.yml` -> `/etc/bitbucket-dc-mcp/config.yml` -> built-in defaults. See `.env.example` for the common variables, and run `bitbucket-dc-mcp config` to print the fully-resolved configuration with secrets redacted.
 
+**`BITBUCKET_DC_MCP_URL` must end in `/rest`** (e.g. `https://bitbucket.example.com/rest`). Bitbucket Data Center's REST API is served under that path prefix; if requests 404, check that your base URL includes it.
+
 ## Usage
 
 ### Terminal Client (default)

@@ -11,6 +11,34 @@ use super::strategies::pat::PatAuthStrategy;
 use super::strategies::stub::StubAuthStrategy;
 
 const CREDENTIAL_ACCOUNT: &str = "active-credentials";
+const ENV_PREFIX: &str = "BITBUCKET_DC_MCP";
+
+/// Reads the `.env.example`-documented credential override env vars
+/// directly into a `Credentials` map for `auth_method`, so a deployment can
+/// supply credentials purely via environment (e.g. a container's env block)
+/// without ever running `setup` first. Returns `None` when the relevant
+/// var(s) aren't set, so callers fall back to the stored-credential lookup
+/// unchanged.
+fn credentials_from_env(auth_method: AuthMethod) -> Option<Credentials> {
+    match auth_method {
+        AuthMethod::Pat => {
+            let token = std::env::var(format!("{ENV_PREFIX}_TOKEN"))
+                .or_else(|_| std::env::var(format!("{ENV_PREFIX}_API_KEY")))
+                .ok()?;
+            let mut credentials = Credentials::new();
+            credentials.insert("token".to_string(), token);
+            Some(credentials)
+        }
+        AuthMethod::Basic => {
+            let username = std::env::var(format!("{ENV_PREFIX}_USERNAME")).ok()?;
+            let password = std::env::var(format!("{ENV_PREFIX}_PASSWORD")).ok()?;
+            let mut credentials = Credentials::new();
+            credentials.insert("username".to_string(), username);
+            credentials.insert("password".to_string(), password);
+            Some(credentials)
+        }
+    }
+}
 
 fn strategy_for(auth_method: AuthMethod) -> Box<dyn AuthStrategy> {
     match auth_method {
@@ -69,6 +97,14 @@ impl AuthManager {
             && self.strategy.validate_credentials(cached)
         {
             return self.normalize_credentials(cached).await;
+        }
+
+        if let Some(from_env) = credentials_from_env(self.auth_method) {
+            if self.strategy.validate_credentials(&from_env) {
+                let normalized = self.normalize_credentials(&from_env).await?;
+                self.cached_credentials = Some(normalized.clone());
+                return Ok(normalized);
+            }
         }
 
         if let Some(stored) = load_credential(CREDENTIAL_ACCOUNT)? {
@@ -167,7 +203,19 @@ impl AuthManager {
         } else if let Some(header) = credentials.get("authorization_header") {
             headers.insert("Authorization".to_string(), header.clone());
         } else if let Some(api_key) = credentials.get("api_key") {
-            headers.insert("X-Api-Key".to_string(), api_key.clone());
+            // This deployment's discovered auth schemes (Basic, PAT) never
+            // populate "api_key"/"request_header_name" — there is no
+            // `AuthMethod::ApiKey` variant for Bitbucket Data Center, so
+            // this branch is presently unreachable in practice. Kept for
+            // structural parity with the other mcpify-generated Rust
+            // servers that do have an api_key scheme: honor the scheme's
+            // real configured header name (via "request_header_name", the
+            // same key checked above) instead of hardcoding "X-Api-Key".
+            let header_name = credentials
+                .get("request_header_name")
+                .cloned()
+                .unwrap_or_else(|| "X-Api-Key".to_string());
+            headers.insert(header_name, api_key.clone());
         }
         Ok(headers)
     }
