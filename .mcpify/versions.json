@@ -15,31 +15,31 @@
       "db_file": "mcp_store_v10.2.db",
       "schemas_file": "src/validation/generated_schemas_v10.2.json.zst",
       "source": "https://dac-static.atlassian.com/server/bitbucket/10.2.swagger.v3.json",
-      "added_at": 1783258656
+      "added_at": 1784412733
     },
     "9.6": {
       "db_file": "mcp_store_v9.6.db",
       "schemas_file": "src/validation/generated_schemas_v9.6.json.zst",
       "source": "https://dac-static.atlassian.com/server/bitbucket/9.6.swagger.v3.json",
-      "added_at": 1783259258
+      "added_at": 1784412736
     },
     "9.5": {
       "db_file": "mcp_store_v9.5.db",
       "schemas_file": "src/validation/generated_schemas_v9.5.json.zst",
       "source": "https://dac-static.atlassian.com/server/bitbucket/9.5.swagger.v3.json",
-      "added_at": 1783259267
+      "added_at": 1784412737
     },
     "9.4": {
       "db_file": "mcp_store_v9.4.db",
       "schemas_file": "src/validation/generated_schemas_v9.4.json.zst",
       "source": "https://dac-static.atlassian.com/server/bitbucket/9.4.swagger.v3.json",
-      "added_at": 1783349123
+      "added_at": 1784412738
     },
     "8.19": {
       "db_file": "mcp_store_v8.19.db",
       "schemas_file": "src/validation/generated_schemas_v8.19.json.zst",
       "source": "https://dac-static.atlassian.com/server/bitbucket/8.19.swagger.v3.json",
-      "added_at": 1783259338
+      "added_at": 1784412739
     }
   }
 }

@@ -42,8 +42,8 @@ fn schemas_zst_for(api_version: &str) -> Option<&'static [u8]> {
         "10.2" => Some(include_bytes!("generated_schemas_v10.2.json.zst")),
         "9.6" => Some(include_bytes!("generated_schemas_v9.6.json.zst")),
         "9.5" => Some(include_bytes!("generated_schemas_v9.5.json.zst")),
-        "8.19" => Some(include_bytes!("generated_schemas_v8.19.json.zst")),
         "9.4" => Some(include_bytes!("generated_schemas_v9.4.json.zst")),
+        "8.19" => Some(include_bytes!("generated_schemas_v8.19.json.zst")),
         _ => None,
     }
 }

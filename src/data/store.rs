@@ -28,22 +28,17 @@ pub const VERSION_STORE_FILES: &[(&str, &str)] = &[
     ("10.2", "mcp_store_v10.2.db"),
     ("9.6", "mcp_store_v9.6.db"),
     ("9.5", "mcp_store_v9.5.db"),
-    ("8.19", "mcp_store_v8.19.db"),
     ("9.4", "mcp_store_v9.4.db"),
+    ("8.19", "mcp_store_v8.19.db"),
 ];
 
-// Each entry is zstd-compressed (level 19) — crates.io enforces a hard
-// 10MiB package-upload limit, and the raw uncompressed stores alone total
-// well over that once every API version carries real embeddings.
-// `resolve_store_path` decompresses these bytes back to a real on-disk
-// `.db` file before `rusqlite::Connection::open` ever sees them.
 const VERSION_STORE_BYTES: &[(&str, &[u8])] = &[
     ("10.3", include_bytes!("../../mcp_store.db.zst")),
     ("10.2", include_bytes!("../../mcp_store_v10.2.db.zst")),
     ("9.6", include_bytes!("../../mcp_store_v9.6.db.zst")),
     ("9.5", include_bytes!("../../mcp_store_v9.5.db.zst")),
-    ("8.19", include_bytes!("../../mcp_store_v8.19.db.zst")),
     ("9.4", include_bytes!("../../mcp_store_v9.4.db.zst")),
+    ("8.19", include_bytes!("../../mcp_store_v8.19.db.zst")),
 ];
 // mcpify:versions:end
 

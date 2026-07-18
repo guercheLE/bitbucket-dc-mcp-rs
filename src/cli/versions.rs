@@ -30,11 +30,11 @@ const KNOWN_VERSIONS: &[VersionRow] = &[
         is_default: false,
     },
     VersionRow {
-        label: "8.19",
+        label: "9.4",
         is_default: false,
     },
     VersionRow {
-        label: "9.4",
+        label: "8.19",
         is_default: false,
     },
 ];
