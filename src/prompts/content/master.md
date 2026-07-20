@@ -20,34 +20,34 @@ intermediate tool traffic than its final summary needs to convey.
 
 | Prompt | Use when the user wants to... |
 |---|---|
-| `bitbucket_workflow_projects` | Manage a project's lifecycle, settings, permissions, or avatar |
-| `bitbucket_workflow_repositories` | Manage a repository's lifecycle, browse its contents, or manage forks/settings |
-| `bitbucket_workflow_pull_requests` | Create, review, or merge a pull request |
-| `bitbucket_workflow_branches_commits` | Work with commits, branches, branch permissions, tags, or compare/diff |
-| `bitbucket_workflow_webhooks` | Set up or manage project/repo webhooks |
-| `bitbucket_workflow_access_tokens_keys` | Manage access tokens, SSH keys, GPG keys, or commit signing |
-| `bitbucket_workflow_secret_scanning` | Configure or review secret scanning |
-| `bitbucket_workflow_admin` | Manage users, groups, permissions, license, or cluster/global settings |
-| `bitbucket_workflow_build_integration` | Report build status, manage required-build merge checks, or Jira dev-panel linkage |
-| `bitbucket_workflow_pr_rules` | Configure standing PR automation rules — default reviewers, reviewer groups, default tasks, auto-merge, auto-decline |
-| `bitbucket_workflow_mirroring` | Set up or manage Smart Mirroring (upstream servers, mirror servers) |
-| `bitbucket_workflow_mesh` | Register a Bitbucket Mesh node and migrate repositories onto it |
-| `bitbucket_workflow_monitoring_diagnostics` | Check a read-only signal: indexing status, audit log, insights, application properties |
+| `bitbucket-projects` | Manage a project's lifecycle, settings, permissions, or avatar |
+| `bitbucket-repositories` | Manage a repository's lifecycle, browse its contents, or manage forks/settings |
+| `bitbucket-pull-requests` | Create, review, or merge a pull request |
+| `bitbucket-branches-commits` | Work with commits, branches, branch permissions, tags, or compare/diff |
+| `bitbucket-webhooks` | Set up or manage project/repo webhooks |
+| `bitbucket-access-tokens-keys` | Manage access tokens, SSH keys, GPG keys, or commit signing |
+| `bitbucket-secret-scanning` | Configure or review secret scanning |
+| `bitbucket-admin` | Manage users, groups, permissions, license, or cluster/global settings |
+| `bitbucket-build-integration` | Report build status, manage required-build merge checks, or Jira dev-panel linkage |
+| `bitbucket-pr-rules` | Configure standing PR automation rules — default reviewers, reviewer groups, default tasks, auto-merge, auto-decline |
+| `bitbucket-mirroring` | Set up or manage Smart Mirroring (upstream servers, mirror servers) |
+| `bitbucket-mesh` | Register a Bitbucket Mesh node and migrate repositories onto it |
+| `bitbucket-monitoring-diagnostics` | Check a read-only signal: indexing status, audit log, insights, application properties |
 
 ## Routing guidance
 
 Match the user's stated goal (if given, above) or their message to exactly
 one row above. If it plausibly spans two (e.g. "set up branch protection
 and require a green build before merge" touches both
-`bitbucket_workflow_branches_commits` and
-`bitbucket_workflow_build_integration`), start with whichever workflow
+`bitbucket-branches-commits` and
+`bitbucket-build-integration`), start with whichever workflow
 owns the primary resource the user is trying to change, and mention the
 other by name rather than duplicating its content here. If nothing above
 fits, fall back to `search`/`get`/`call` directly rather than forcing a
 mismatched workflow.
 
-Don't confuse `bitbucket_workflow_pull_requests` (driving one PR through
-review and merge) with `bitbucket_workflow_pr_rules` (configuring the
+Don't confuse `bitbucket-pull-requests` (driving one PR through
+review and merge) with `bitbucket-pr-rules` (configuring the
 standing default-reviewer/auto-merge/auto-decline rules that apply
 automatically to future PRs) — route on which one the user actually
 means.

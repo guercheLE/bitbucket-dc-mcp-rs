@@ -2,8 +2,8 @@
 
 Covers instance-wide administration: users and groups (lifecycle, group
 membership), instance-wide permissions (as distinct from project- or
-repository-scoped permissions in `bitbucket_workflow_projects`/
-`bitbucket_workflow_repositories`), license management, and
+repository-scoped permissions in `bitbucket-projects`/
+`bitbucket-repositories`), license management, and
 cluster/global settings.
 
 **Search by capability, never by a fixed operation name.** `operationId`s
@@ -44,7 +44,7 @@ calls around confirmation than a typical CRUD domain.
 
 - **Instance data export/import** (~18 operations) — high-stakes and
   instance-wide; confirm explicitly with the user before starting an
-  export or import. Don't confuse this with `bitbucket_workflow_mesh`'s
+  export or import. Don't confuse this with `bitbucket-mesh`'s
   per-repository Git-storage migration onto a Mesh node — a different,
   narrower capability that shares only the word "migration".
 - **SSO/IdP configuration** (~13 operations) — absent entirely in 8.19;

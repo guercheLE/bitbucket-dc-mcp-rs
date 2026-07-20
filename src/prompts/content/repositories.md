@@ -16,7 +16,7 @@ Never assume a response field name — read the schema `get` returns.
 
 - A repository's pull-request/merge configuration (required approvals,
   required builds, merge strategy) is covered in
-  `bitbucket_workflow_pull_requests`'s Step 1, not here — fetch that
+  `bitbucket-pull-requests`'s Step 1, not here — fetch that
   prompt if the user's real goal is about merging, not the repository
   resource itself.
 - Deleting a repository is not immediately reversible from this API in

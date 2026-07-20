@@ -4,7 +4,7 @@ Guides creating a pull request, gathering reviews, and merging it — the single
 largest and most-used Bitbucket Data Center domain (44 operations).
 
 **This sub-workflow is self-contained and delegable.** If you were routed
-here from `bitbucket_workflow`'s menu, or your environment otherwise
+here from `bitbucket`'s menu, or your environment otherwise
 supports running this as its own isolated sub-task (an agent/task tool),
 run it that way: everything you need is in this prompt's own text plus the
 "Context already provided" parameters above. Report back to whoever
@@ -96,11 +96,11 @@ operations rather than repeating Step 2's per-repository PR search.
 
 For configuring *standing* default-reviewer/auto-merge/auto-decline
 rules that apply automatically to future PRs — as opposed to acting on
-one already-open PR — fetch `bitbucket_workflow_pr_rules` instead.
+one already-open PR — fetch `bitbucket-pr-rules` instead.
 
 ## Composing with other workflows
 
 Step 1's merge-settings lookup and Step 4's build-status check overlap
-with `bitbucket_workflow_repositories` and `bitbucket_workflow_build_integration`
+with `bitbucket-repositories` and `bitbucket-build-integration`
 respectively — fetch those prompts by name for more detail rather than
 duplicating their content here.

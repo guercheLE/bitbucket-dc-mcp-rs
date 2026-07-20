@@ -20,7 +20,7 @@ use crate::prompts::{
 #[prompt_router(vis = "pub")]
 impl McpifyServer {
     #[prompt(
-        name = "bitbucket_workflow",
+        name = "bitbucket",
         description = "Start here. Presents the available Bitbucket Data Center management \
                         workflows, routes to the right guided sub-workflow based on the user's \
                         goal, and — where the environment supports it — delegates that whole \
@@ -39,7 +39,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_pull_requests",
+        name = "bitbucket-pull-requests",
         description = "Guided pull request flow: check the repository's merge/approval \
                         configuration, create the PR (or find an existing one), add \
                         reviewers and tasks, gate on approvals/builds/unresolved tasks, then \
@@ -62,7 +62,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_projects",
+        name = "bitbucket-projects",
         description = "Project lifecycle, settings, permissions, avatar, and restrictions."
     )]
     async fn bitbucket_workflow_projects_prompt(&self) -> Vec<PromptMessage> {
@@ -74,7 +74,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_repositories",
+        name = "bitbucket-repositories",
         description = "Repository lifecycle, browsing contents (files/raw/readme/license/\
                         archive), forks, related repos, and settings."
     )]
@@ -87,7 +87,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_branches_commits",
+        name = "bitbucket-branches-commits",
         description = "Commits, branches, branch permissions/restrictions, branch-utils, tags, \
                         and compare/diff between refs."
     )]
@@ -103,7 +103,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_webhooks",
+        name = "bitbucket-webhooks",
         description = "Project- and repository-scoped webhook lifecycle."
     )]
     async fn bitbucket_workflow_webhooks_prompt(&self) -> Vec<PromptMessage> {
@@ -115,7 +115,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_access_tokens_keys",
+        name = "bitbucket-access-tokens-keys",
         description = "Access tokens (user/project/repo scoped), SSH keys, GPG keys, and \
                         commit signing."
     )]
@@ -131,7 +131,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_secret_scanning",
+        name = "bitbucket-secret-scanning",
         description = "Project- and repository-scoped secret scanning settings, findings, and \
                         allowlisting."
     )]
@@ -144,7 +144,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_admin",
+        name = "bitbucket-admin",
         description = "Instance-wide users, groups, permissions, license, and cluster/global \
                         settings."
     )]
@@ -157,7 +157,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_build_integration",
+        name = "bitbucket-build-integration",
         description = "Build status on commits, required-builds merge checks, and Jira \
                         dev-panel linkage."
     )]
@@ -173,7 +173,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_pr_rules",
+        name = "bitbucket-pr-rules",
         description = "Project- or repository-scoped standing PR automation rules: default \
                         reviewers, reviewer groups, default tasks (9.4+), auto-merge, and \
                         auto-decline — policy that shapes future pull requests, distinct \
@@ -194,7 +194,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_mirroring",
+        name = "bitbucket-mirroring",
         description = "Guided Smart Mirroring setup: upstream server, mirror server \
                         registration, acceptance, and sync verification."
     )]
@@ -213,11 +213,11 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_mesh",
+        name = "bitbucket-mesh",
         description = "Guided Bitbucket Mesh setup: register a mesh node, verify its \
                         connectivity, then preview/start/monitor a repository migration \
                         job onto it. Not to be confused with the general instance-data \
-                        migration covered by bitbucket_workflow_admin."
+                        migration covered by bitbucket-admin."
     )]
     async fn bitbucket_workflow_mesh_prompt(
         &self,
@@ -234,7 +234,7 @@ impl McpifyServer {
     }
 
     #[prompt(
-        name = "bitbucket_workflow_monitoring_diagnostics",
+        name = "bitbucket-monitoring-diagnostics",
         description = "Thin pointer to the right read-only signal: indexing status, audit \
                         log, insights reports, application properties."
     )]

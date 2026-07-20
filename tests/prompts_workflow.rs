@@ -33,20 +33,20 @@ fn server() -> McpifyServer {
 }
 
 const EXPECTED_PROMPT_NAMES: &[&str] = &[
-    "bitbucket_workflow",
-    "bitbucket_workflow_access_tokens_keys",
-    "bitbucket_workflow_admin",
-    "bitbucket_workflow_branches_commits",
-    "bitbucket_workflow_build_integration",
-    "bitbucket_workflow_mesh",
-    "bitbucket_workflow_mirroring",
-    "bitbucket_workflow_monitoring_diagnostics",
-    "bitbucket_workflow_pr_rules",
-    "bitbucket_workflow_projects",
-    "bitbucket_workflow_pull_requests",
-    "bitbucket_workflow_repositories",
-    "bitbucket_workflow_secret_scanning",
-    "bitbucket_workflow_webhooks",
+    "bitbucket",
+    "bitbucket-access-tokens-keys",
+    "bitbucket-admin",
+    "bitbucket-branches-commits",
+    "bitbucket-build-integration",
+    "bitbucket-mesh",
+    "bitbucket-mirroring",
+    "bitbucket-monitoring-diagnostics",
+    "bitbucket-pr-rules",
+    "bitbucket-projects",
+    "bitbucket-pull-requests",
+    "bitbucket-repositories",
+    "bitbucket-secret-scanning",
+    "bitbucket-webhooks",
 ];
 
 #[test]
@@ -54,7 +54,7 @@ fn server_info_advertises_the_prompts_capability() {
     let info = server().get_info();
     assert_eq!(info.protocol_version, ProtocolVersion::V_2024_11_05);
     assert!(info.capabilities.prompts.is_some());
-    assert!(info.instructions.unwrap().contains("bitbucket_workflow"));
+    assert!(info.instructions.unwrap().contains("bitbucket"));
 }
 
 #[tokio::test]
@@ -73,8 +73,8 @@ async fn mcp_protocol_lists_every_workflow_prompt_with_optional_arguments() {
 
     let pull_requests = prompts
         .iter()
-        .find(|p| p.name == "bitbucket_workflow_pull_requests")
-        .expect("bitbucket_workflow_pull_requests should be listed");
+        .find(|p| p.name == "bitbucket-pull-requests")
+        .expect("bitbucket-pull-requests should be listed");
     let arguments = pull_requests
         .arguments
         .as_ref()
@@ -119,11 +119,11 @@ async fn master_prompt_links_to_the_pull_requests_sub_workflow() {
     let client = TestClient.serve(client_transport).await.unwrap();
 
     let result = client
-        .get_prompt(GetPromptRequestParams::new("bitbucket_workflow"))
+        .get_prompt(GetPromptRequestParams::new("bitbucket"))
         .await
         .unwrap();
     let text = prompt_text(&result);
-    assert!(text.contains("bitbucket_workflow_pull_requests"));
+    assert!(text.contains("bitbucket-pull-requests"));
 
     drop(client);
     tokio::time::timeout(std::time::Duration::from_secs(2), server_task)
@@ -144,7 +144,7 @@ async fn pull_requests_prompt_echoes_supplied_args_and_lists_missing_ones() {
 
     let result = client
         .get_prompt(
-            GetPromptRequestParams::new("bitbucket_workflow_pull_requests").with_arguments(
+            GetPromptRequestParams::new("bitbucket-pull-requests").with_arguments(
                 serde_json::json!({
                     "project_key": "PROJ",
                     "repo_slug": "my-repo"

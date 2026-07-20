@@ -8,7 +8,7 @@ exist before a mirror server can register against it, and a mirror server
 must be accepted before it starts syncing.
 
 **This sub-workflow is self-contained and delegable.** If routed here from
-`bitbucket_workflow`'s menu, or your environment otherwise supports
+`bitbucket`'s menu, or your environment otherwise supports
 running this as its own isolated sub-task, run it that way and report
 back only a short summary — what's registered, accepted, and syncing —
 not the full step-by-step trace.

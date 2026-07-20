@@ -18,7 +18,7 @@ operation across versions.
 ## Gotchas
 
 - Required-build merge checks configured here are one of the conditions
-  `bitbucket_workflow_pull_requests`'s Step 4 gates on — if the user's
+  `bitbucket-pull-requests`'s Step 4 gates on — if the user's
   real goal is merging a PR, point them there instead of only reporting
   build status in isolation.
 - Confirm the exact commit SHA (full 40-character SHA1, not an

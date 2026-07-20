@@ -11,7 +11,7 @@ default (10.3) store, present in all 6 supported API versions (19 in
 8.19, 18 in 9.4) — no version hedge needed for this workflow.
 
 **Don't confuse this with the general instance-wide data migration
-covered in `bitbucket_workflow_admin`.** That workflow's migration
+covered in `bitbucket-admin`.** That workflow's migration
 material is about exporting/importing an entire Bitbucket instance's data
 between deployments. This workflow is specifically about migrating one
 repository's Git storage onto a registered Mesh node — a narrower,
@@ -19,7 +19,7 @@ per-repository operation that shares only the word "migration" with that
 unrelated admin capability.
 
 **This sub-workflow is self-contained and delegable.** If routed here
-from `bitbucket_workflow`'s menu, or your environment otherwise supports
+from `bitbucket`'s menu, or your environment otherwise supports
 running this as its own isolated sub-task, run it that way and report
 back only a short summary — what's registered, verified, and migrated —
 not the full step-by-step trace.

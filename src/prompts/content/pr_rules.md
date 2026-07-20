@@ -7,7 +7,7 @@ auto-decline conditions (6 operations) — up to 45 operations in the
 default (10.3) store. **This is standing policy that shapes every future
 pull request automatically, not the execution of one PR's lifecycle** —
 for driving a single PR through review and merge, use
-`bitbucket_workflow_pull_requests` instead; fetch this workflow only when
+`bitbucket-pull-requests` instead; fetch this workflow only when
 the user's real goal is configuring a rule, not acting on one PR.
 
 **Version hedge — default tasks are absent before 9.4.** Confirm the
@@ -18,7 +18,7 @@ not 45). If it's unavailable, tell the user rather than searching
 indefinitely for an operation that doesn't exist on their version.
 
 **This sub-workflow is self-contained and delegable.** If routed here
-from `bitbucket_workflow`'s menu, or your environment otherwise supports
+from `bitbucket`'s menu, or your environment otherwise supports
 running this as its own isolated sub-task, run it that way and report
 back only a short summary — what's configured, and anything skipped —
 not the full step-by-step trace.
@@ -89,5 +89,5 @@ auto-merge, auto-decline) and anything skipped due to the version hedge.
 
 These rules gate future PRs automatically; they don't affect PRs already
 open. For checking or acting on an existing PR's reviewers, tasks, or
-merge readiness, fetch `bitbucket_workflow_pull_requests` instead of
+merge readiness, fetch `bitbucket-pull-requests` instead of
 duplicating that content here.

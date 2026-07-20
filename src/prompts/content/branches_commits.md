@@ -16,8 +16,8 @@ returns.
 ## Gotchas
 
 - Branch permissions/restrictions here compose with
-  `bitbucket_workflow_pull_requests`'s merge gate (Step 4) and
-  `bitbucket_workflow_build_integration`'s required-build checks — a
+  `bitbucket-pull-requests`'s merge gate (Step 4) and
+  `bitbucket-build-integration`'s required-build checks — a
   restricted branch that also requires builds needs both configured to
   behave as the user expects. Point the user to those prompts rather than
   re-deriving their content here.

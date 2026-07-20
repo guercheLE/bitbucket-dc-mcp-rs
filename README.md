@@ -121,29 +121,29 @@ Keep the listener on localhost unless you have added appropriate network access 
 ### Guided workflow prompts
 
 Beyond the 3 tools, the server exposes an MCP **prompts** capability:
-`bitbucket_workflow` (a master menu) plus 13 guided sub-workflow prompts
+`bitbucket` (a master menu) plus 13 guided sub-workflow prompts
 that encode multi-step sequencing knowledge — what order to call
 operations in, which steps gate on which — for common Bitbucket Data
-Center management tasks. Fetch `bitbucket_workflow` first via
+Center management tasks. Fetch `bitbucket` first via
 `prompts/get` to route to the right sub-workflow, or fetch any prompt
 below directly by name.
 
 | Prompt | Use when the user wants to... |
 |---|---|
-| `bitbucket_workflow` | Start here — routes to the right guided sub-workflow |
-| `bitbucket_workflow_projects` | Manage a project's lifecycle, settings, permissions, or avatar |
-| `bitbucket_workflow_repositories` | Manage a repository's lifecycle, browse its contents, or manage forks/settings |
-| `bitbucket_workflow_pull_requests` | Create, review, or merge a pull request |
-| `bitbucket_workflow_branches_commits` | Work with commits, branches, branch permissions, tags, or compare/diff |
-| `bitbucket_workflow_webhooks` | Set up or manage project/repo webhooks |
-| `bitbucket_workflow_access_tokens_keys` | Manage access tokens, SSH keys, GPG keys, or commit signing |
-| `bitbucket_workflow_secret_scanning` | Configure or review secret scanning |
-| `bitbucket_workflow_admin` | Manage users, groups, permissions, license, or cluster/global settings |
-| `bitbucket_workflow_build_integration` | Report build status, manage required-build merge checks, or Jira dev-panel linkage |
-| `bitbucket_workflow_pr_rules` | Configure standing PR automation rules — default reviewers, reviewer groups, default tasks, auto-merge, auto-decline |
-| `bitbucket_workflow_mirroring` | Set up or manage Smart Mirroring (upstream servers, mirror servers) |
-| `bitbucket_workflow_mesh` | Register a Bitbucket Mesh node and migrate repositories onto it |
-| `bitbucket_workflow_monitoring_diagnostics` | Check a read-only signal: indexing status, audit log, insights, application properties |
+| `bitbucket` | Start here — routes to the right guided sub-workflow |
+| `bitbucket-projects` | Manage a project's lifecycle, settings, permissions, or avatar |
+| `bitbucket-repositories` | Manage a repository's lifecycle, browse its contents, or manage forks/settings |
+| `bitbucket-pull-requests` | Create, review, or merge a pull request |
+| `bitbucket-branches-commits` | Work with commits, branches, branch permissions, tags, or compare/diff |
+| `bitbucket-webhooks` | Set up or manage project/repo webhooks |
+| `bitbucket-access-tokens-keys` | Manage access tokens, SSH keys, GPG keys, or commit signing |
+| `bitbucket-secret-scanning` | Configure or review secret scanning |
+| `bitbucket-admin` | Manage users, groups, permissions, license, or cluster/global settings |
+| `bitbucket-build-integration` | Report build status, manage required-build merge checks, or Jira dev-panel linkage |
+| `bitbucket-pr-rules` | Configure standing PR automation rules — default reviewers, reviewer groups, default tasks, auto-merge, auto-decline |
+| `bitbucket-mirroring` | Set up or manage Smart Mirroring (upstream servers, mirror servers) |
+| `bitbucket-mesh` | Register a Bitbucket Mesh node and migrate repositories onto it |
+| `bitbucket-monitoring-diagnostics` | Check a read-only signal: indexing status, audit log, insights, application properties |
 
 Prompt content is written to be version-agnostic across all 6 supported
 API versions, the same way the 3 tools are — see
