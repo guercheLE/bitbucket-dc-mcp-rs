@@ -26,3 +26,13 @@ Never assume a response field name — read the schema `get` returns.
 This is a dual-resource CRUD domain (project + repository) — most
 requests here are a single `search` → `get` → `call`, not a multi-step
 guided flow.
+
+## Also in scope
+
+- **Hook scripts and hooks** (~25 operations combined) — custom
+  pre/post-receive git hook scripts must be registered at the project or
+  repository level before a repository can enable/configure them by
+  script ID; Bitbucket's own built-in hooks (enable/disable) are a
+  separate, smaller set of operations under the same settings area.
+- **Labels** (6 operations) — simple CRUD, no ordering dependency with
+  anything else in this domain.

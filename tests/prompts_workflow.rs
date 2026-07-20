@@ -38,8 +38,10 @@ const EXPECTED_PROMPT_NAMES: &[&str] = &[
     "bitbucket_workflow_admin",
     "bitbucket_workflow_branches_commits",
     "bitbucket_workflow_build_integration",
+    "bitbucket_workflow_mesh",
     "bitbucket_workflow_mirroring",
     "bitbucket_workflow_monitoring_diagnostics",
+    "bitbucket_workflow_pr_rules",
     "bitbucket_workflow_projects",
     "bitbucket_workflow_pull_requests",
     "bitbucket_workflow_repositories",
@@ -84,14 +86,19 @@ async fn mcp_protocol_lists_every_workflow_prompt_with_optional_arguments() {
             "expected argument `{expected}` in {arg_names:?}"
         );
     }
-    for arg in arguments {
-        assert_eq!(
-            arg.required,
-            Some(false),
-            "prompt argument `{}` must never be required — \"ask if missing\" lives in the \
-             prose, not transport-level validation",
-            arg.name
-        );
+    for prompt in &prompts {
+        if let Some(arguments) = &prompt.arguments {
+            for arg in arguments {
+                assert_eq!(
+                    arg.required,
+                    Some(false),
+                    "prompt `{}` argument `{}` must never be required — \"ask if missing\" \
+                     lives in the prose, not transport-level validation",
+                    prompt.name,
+                    arg.name
+                );
+            }
+        }
     }
 
     drop(client);

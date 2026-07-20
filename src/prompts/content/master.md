@@ -29,7 +29,9 @@ intermediate tool traffic than its final summary needs to convey.
 | `bitbucket_workflow_secret_scanning` | Configure or review secret scanning |
 | `bitbucket_workflow_admin` | Manage users, groups, permissions, license, or cluster/global settings |
 | `bitbucket_workflow_build_integration` | Report build status, manage required-build merge checks, or Jira dev-panel linkage |
+| `bitbucket_workflow_pr_rules` | Configure standing PR automation rules — default reviewers, reviewer groups, default tasks, auto-merge, auto-decline |
 | `bitbucket_workflow_mirroring` | Set up or manage Smart Mirroring (upstream servers, mirror servers) |
+| `bitbucket_workflow_mesh` | Register a Bitbucket Mesh node and migrate repositories onto it |
 | `bitbucket_workflow_monitoring_diagnostics` | Check a read-only signal: indexing status, audit log, insights, application properties |
 
 ## Routing guidance
@@ -43,3 +45,9 @@ owns the primary resource the user is trying to change, and mention the
 other by name rather than duplicating its content here. If nothing above
 fits, fall back to `search`/`get`/`call` directly rather than forcing a
 mismatched workflow.
+
+Don't confuse `bitbucket_workflow_pull_requests` (driving one PR through
+review and merge) with `bitbucket_workflow_pr_rules` (configuring the
+standing default-reviewer/auto-merge/auto-decline rules that apply
+automatically to future PRs) — route on which one the user actually
+means.

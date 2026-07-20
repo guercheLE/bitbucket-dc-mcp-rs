@@ -27,3 +27,13 @@ operation across versions.
 
 This is a CRUD domain — most requests here are a single `search` → `get`
 → `call`, not a multi-step guided flow.
+
+## Also in scope
+
+- **Code Insights reports and annotations** (~13 operations) — the same
+  CI-tool-reporting audience as build status: a CI tool posts a report
+  (e.g. test coverage, lint results) and per-file annotations against a
+  commit, read back the same way build statuses are.
+- **Deployment tracking** (~4 operations) — records a deployment's
+  environment and state against a commit; the same CI/CD signal family
+  as build status.

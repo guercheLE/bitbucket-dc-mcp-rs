@@ -20,6 +20,10 @@ returns.
   — don't assume based on which one is mentioned first.
 - A webhook's target URL and secret are sensitive; never log or echo the
   configured secret back in a summary.
+- Delivery statistics sit alongside the delivery-history operation
+  already covered above — search for how to fetch a webhook's delivery
+  statistics if the user wants aggregate success/failure counts rather
+  than the raw history.
 
 This is a CRUD domain — most requests here are a single `search` → `get`
 → `call`, not a multi-step guided flow.

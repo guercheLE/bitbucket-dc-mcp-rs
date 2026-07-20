@@ -84,6 +84,20 @@ returned without an error) before declaring success.
 Report what was accomplished (PR created/merged/still pending and why).
 Offer to delete the now-merged source branch if the user wants.
 
+## Also in scope (brief)
+
+Smaller PR-adjacent capabilities that don't need their own numbered
+step: comment likes/reactions (path shape differs by version, so search
+rather than assuming one), watching a PR, participants (distinct from
+required reviewers), blocker comments, and rebasing as an alternative to
+Step 5's merge when the repository's strategy allows it. For "what's
+waiting on me across every repository", search for the inbox/dashboard
+operations rather than repeating Step 2's per-repository PR search.
+
+For configuring *standing* default-reviewer/auto-merge/auto-decline
+rules that apply automatically to future PRs — as opposed to acting on
+one already-open PR — fetch `bitbucket_workflow_pr_rules` instead.
+
 ## Composing with other workflows
 
 Step 1's merge-settings lookup and Step 4's build-status check overlap

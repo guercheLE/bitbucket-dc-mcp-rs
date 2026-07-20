@@ -40,6 +40,22 @@ pub struct MirroringWorkflowArgs {
     pub upstream_repo_slug: Option<String>,
 }
 
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+pub struct MeshWorkflowArgs {
+    /// Bitbucket project key of the repository being migrated onto Mesh
+    pub project_key: Option<String>,
+    /// Repository slug within the project being migrated onto Mesh
+    pub repo_slug: Option<String>,
+}
+
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+pub struct PrRulesWorkflowArgs {
+    /// Bitbucket project key the automation rules apply to
+    pub project_key: Option<String>,
+    /// Repository slug to scope the rules to a single repository (omit for project-wide rules)
+    pub repo_slug: Option<String>,
+}
+
 /// Renders a short "Context already provided" block from a prompt's
 /// optional arguments, prepended (by each `router.rs` method) to that
 /// prompt's static markdown body. Lets the guided prose ask the user only

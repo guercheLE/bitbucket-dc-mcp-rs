@@ -39,3 +39,22 @@ This domain spans several resource types without the strict cross-resource
 ordering that would justify full step-gating — most individual requests
 are still a single `search` → `get` → `call`, just with more judgment
 calls around confirmation than a typical CRUD domain.
+
+## Also in scope
+
+- **Instance data export/import** (~18 operations) — high-stakes and
+  instance-wide; confirm explicitly with the user before starting an
+  export or import. Don't confuse this with `bitbucket_workflow_mesh`'s
+  per-repository Git-storage migration onto a Mesh node — a different,
+  narrower capability that shares only the word "migration".
+- **SSO/IdP configuration** (~13 operations) — absent entirely in 8.19;
+  confirm the active API version supports it before searching for these
+  operations there.
+- **Rate limiting and mail server** instance settings (~14 operations
+  combined) are stable across all supported versions.
+- **Content Security Policy** settings (1 operation) exist only in
+  10.2/10.3.
+- **Two-step verification / TOTP self-enrollment** (~19 operations,
+  9.4+ only) exists but isn't a fit for guided text-driven automation —
+  it requires out-of-band interaction (scanning a QR code). Point the
+  user to the Bitbucket UI for that instead of attempting it here.

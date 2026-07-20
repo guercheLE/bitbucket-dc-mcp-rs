@@ -10,7 +10,8 @@ use rmcp::{prompt, prompt_router};
 
 use crate::core::mcp_server::McpifyServer;
 use crate::prompts::{
-    MasterWorkflowArgs, MirroringWorkflowArgs, PullRequestsWorkflowArgs, render_context_header,
+    MasterWorkflowArgs, MeshWorkflowArgs, MirroringWorkflowArgs, PrRulesWorkflowArgs,
+    PullRequestsWorkflowArgs, render_context_header,
 };
 
 // `vis = pub`: the generated `prompt_router()` associated fn must be
@@ -172,6 +173,27 @@ impl McpifyServer {
     }
 
     #[prompt(
+        name = "bitbucket_workflow_pr_rules",
+        description = "Project- or repository-scoped standing PR automation rules: default \
+                        reviewers, reviewer groups, default tasks (9.4+), auto-merge, and \
+                        auto-decline — policy that shapes future pull requests, distinct \
+                        from driving a single PR's lifecycle."
+    )]
+    async fn bitbucket_workflow_pr_rules_prompt(
+        &self,
+        Parameters(args): Parameters<PrRulesWorkflowArgs>,
+    ) -> Vec<PromptMessage> {
+        let header = render_context_header(&[
+            ("project_key", args.project_key.as_deref()),
+            ("repo_slug", args.repo_slug.as_deref()),
+        ]);
+        vec![PromptMessage::new_text(
+            Role::User,
+            format!("{header}\n\n{}", include_str!("content/pr_rules.md")),
+        )]
+    }
+
+    #[prompt(
         name = "bitbucket_workflow_mirroring",
         description = "Guided Smart Mirroring setup: upstream server, mirror server \
                         registration, acceptance, and sync verification."
@@ -187,6 +209,27 @@ impl McpifyServer {
         vec![PromptMessage::new_text(
             Role::User,
             format!("{header}\n\n{}", include_str!("content/mirroring.md")),
+        )]
+    }
+
+    #[prompt(
+        name = "bitbucket_workflow_mesh",
+        description = "Guided Bitbucket Mesh setup: register a mesh node, verify its \
+                        connectivity, then preview/start/monitor a repository migration \
+                        job onto it. Not to be confused with the general instance-data \
+                        migration covered by bitbucket_workflow_admin."
+    )]
+    async fn bitbucket_workflow_mesh_prompt(
+        &self,
+        Parameters(args): Parameters<MeshWorkflowArgs>,
+    ) -> Vec<PromptMessage> {
+        let header = render_context_header(&[
+            ("project_key", args.project_key.as_deref()),
+            ("repo_slug", args.repo_slug.as_deref()),
+        ]);
+        vec![PromptMessage::new_text(
+            Role::User,
+            format!("{header}\n\n{}", include_str!("content/mesh.md")),
         )]
     }
 
